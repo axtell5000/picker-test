@@ -2,6 +2,7 @@ const gulp = require('gulp');
 const sass = require('gulp-sass');
 const cleanCSS = require('gulp-clean-css');
 const browserSync = require('browser-sync').create();
+const babel = require('gulp-babel');
 const minify = require('gulp-minify');
 
 gulp.task('sass', function() {
@@ -19,6 +20,10 @@ gulp.task('minify-css', () => {
 
 gulp.task('compress', function() {
     gulp.src('assets/js/*.js')
+      
+      .pipe(babel({
+        presets: ['@babel/env']
+      }))
       .pipe(minify({noSource: true}))
       .pipe(gulp.dest('dist/assets/js'))
   });
@@ -35,4 +40,4 @@ gulp.task('serve', ['sass', 'minify-css'], function() {
     gulp.watch("./*.html").on('change', browserSync.reload);
 });
 
-gulp.task('default', ['serve']);
+gulp.task('default', ['serve', 'compress']);
