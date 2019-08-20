@@ -1,13 +1,13 @@
-const monthArray = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-
 
 class DatePicker {
 
   constructor() {
     this.insertMonths();
     this.insertYears();
-  };
+  }
+
   insertMonths() {
+    const monthArray = ['Januar', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
     const monthsSel = document.querySelector('#month');
     let option = null;
 
@@ -21,12 +21,16 @@ class DatePicker {
 
   insertYears() {
     const yearSelect = document.querySelector('#year');
+    const m = moment();
+    console.log(m);
   }
 }
 
-// iniate class on load
+// initiate class on load
 window.addEventListener("load", () => {
+  
   const test = new DatePicker();
+  
 });
 
 
