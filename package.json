@@ -1,0 +1,22 @@
+{
+  "name": "date-picker",
+  "version": "1.0.0",
+  "description": "A date picker test",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "test"
+  ],
+  "author": "Stephen Axtell",
+  "license": "ISC",
+  "dependencies": {},
+  "devDependencies": {
+    "browser-sync": "^2.26.3",
+    "gulp": "3.9.1",
+    "gulp-clean-css": "^4.0.0",
+    "gulp-minify": "0.0.15",
+    "gulp-sass": "^4.0.2"
+  }
+}
