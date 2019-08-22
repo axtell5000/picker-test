@@ -1,0 +1,19 @@
+table {
+  border-collapse: collapse;
+  border: 1px solid #000000;
+}
+
+td, th {
+  background: #ccc;
+  text-align: center;
+  border: 1px solid #000000;
+  padding: 10px;
+}
+
+.in_month {
+  background-color: aquamarine;
+}
+
+.not_in_month {
+  background-color: bisque;
+}
