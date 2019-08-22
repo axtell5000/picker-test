@@ -12,6 +12,7 @@
   "author": "Stephen Axtell",
   "license": "ISC",
   "dependencies": {
+    "@babel/polyfill": "^7.4.4",
     "moment": "^2.24.0"
   },
   "devDependencies": {

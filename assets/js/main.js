@@ -76,12 +76,19 @@ class DatePicker {
     const dateObj = {
       startOfMonth : dateFormat.startOf('month').format('d'),      
       daysInMonth : dateFormat.daysInMonth(),
-      isLeapYear : dateFormat.isLeapYear(date),
       month: dateFormat.format('MMMM'),
       year: dateFormat.format('YYYY')
     };
 
     this.renderDateGrid(dateObj);
+  }
+
+  calcBookingDate(dateObj, day) {
+    console.log(day);
+    const bookingField = document.querySelector('#booking-date');
+    bookingField.value = '';
+    const finalDate = `${day} ${dateObj.month} ${dateObj.year}`;  
+    bookingField.value = finalDate;
   }
 
   // Rendering the date grid
@@ -102,10 +109,18 @@ class DatePicker {
     let dayCounter = parseInt(dateObj.daysInMonth, 10);
     let runningTotal = 0;
     let dateTotal = 1;
-    const maxRows = Math.floor((dayCounter + start) / 7);
-    
-    console.log(dayCounter);
-    console.log(maxRows)
+    let maxRows = 0;
+
+
+    if (dayCounter > 30 && start >= 5) {
+      maxRows = 6;
+    } else if (dayCounter >= 30 && start >= 6) {
+      maxRows = 6;
+    } 
+    else {
+      maxRows = 5;
+    }
+
     for (let i = 0; i < maxRows; i++) {
       const row = document.createElement('tr');
       gridBody.appendChild(row);
@@ -114,13 +129,20 @@ class DatePicker {
         const cell = document.createElement('td');
 
         if (runningTotal < start) {
-          cell.textContent = 'b';
+          cell.classList.add('not_in_month');
           runningTotal++;
         } else if (dateTotal <= dayCounter)  {
+          cell.classList.add('in_month');
+
           cell.textContent = dateTotal;
+          cell.addEventListener('click', event => {
+            let day = cell.textContent;
+            console.log(day, 'hello');
+            this.calcBookingDate(dateObj, day);
+          });
           dateTotal++;
         } else {
-          cell.textContent = 'b';
+          cell.classList.add('not_in_month');
         }
         
         row.appendChild(cell);
@@ -132,6 +154,7 @@ class DatePicker {
 
 
     }
+
 
   }
 }

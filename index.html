@@ -5,17 +5,18 @@
   <meta name="description" content="A datepicker">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
-  <link media="all" rel="stylesheet" href="/css/main.css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet"> 
+  <link media="all" rel="stylesheet" href="./dist/assets/css/main.css">
   <title>A datepicker</title>
 </head>
 <body>
 
   <h1>Pick your date!</h1>
   <div class="container">
+    <span class="icon-circle-left left"></span>
     <select name="month" id="month"></select>
     <select name="year" id="year"></select>
-
+    <span class="icon-circle-right right"></span>
 
   </div>
 
@@ -34,8 +35,19 @@
 
       </tbody>
     </table>
+    <br><br>
+    <div class="label-holder ">
+      <label for="booking-date" >
+        You have booked for the 
+        <input type="text" id="booking-date">
+      </label>
+    </div>
   </div>
 
+  
+
+
+  <script src="./dist/assets/js/polyfill-min.js">  </script>
   <script src="./dist/assets/js/moment-with-locales.min.js"></script>
   <script src="./dist/assets/js/main-min.js"></script>
   
