@@ -9,16 +9,52 @@ select:first-child {
   width: 150px;
 }
 
-.container {
-  display: flex;
-  justify-content: center;
-  padding-top: 30px;
+.picker-wrapper {
+  background-color: #505863;
+  margin: 0 auto;
+  padding-bottom: 17px;
+  width: 680px;
+  
+}
+
+.picker-pop-back {
+  background-color: rgba(#000000, 0.4);  
+  display: none;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
   width: 100%;
 }
 
-.table-container {
-  display: block;
-  margin: 30px auto 0 auto;
-  width: 70%;
+.displayNone {
+  display: none;
 }
 
+.displayBlock {
+  display: block; 
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  padding-top: 25px;
+  width: 100%;
+}
+
+.intro-container {
+  margin: 0 auto;
+  width: 70%;
+
+  > button {
+    background-color: #505863;
+    border: 0;
+    color: #ffffff;
+    cursor: pointer;
+    padding: 10px;
+  }
+
+  > button:hover {
+    background-color: #4287f5;
+  }
+}

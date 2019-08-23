@@ -58,14 +58,13 @@ class DatePicker {
   addEvent() {
     const selects = document.getElementsByTagName('select');
     
-    // if a person doesnt actually select a date, just use the default date
+    // if a person doesnt actually select a date, just use the default Month and year
     this.selectedDate(selects);
 
     for (let select of selects) {
       select.addEventListener('change', () => {
         this.selectedDate(selects);
-      });
-      
+      });      
     }   
   }
 
@@ -83,8 +82,8 @@ class DatePicker {
     this.renderDateGrid(dateObj);
   }
 
-  calcBookingDate(dateObj, day) {
-    console.log(day);
+  // Calculating the final booking date
+  calcBookingDate(dateObj, day) {    
     const bookingField = document.querySelector('#booking-date');
     bookingField.value = '';
     const finalDate = `${day} ${dateObj.month} ${dateObj.year}`;  
@@ -93,8 +92,8 @@ class DatePicker {
 
   // Rendering the date grid
   renderDateGrid(dateObj) {
+    // We basing all the calculations with Sunday being 0, Monday = 1 etc
 
-    
     const gridBody = document.querySelector('#dateGrid');
 
     if(typeof(gridBody) != 'undefined' && gridBody != null){
@@ -111,7 +110,7 @@ class DatePicker {
     let dateTotal = 1;
     let maxRows = 0;
 
-
+    // To determine how many rows, based on start of month and how many days in the month
     if (dayCounter > 30 && start >= 5) {
       maxRows = 6;
     } else if (dayCounter >= 30 && start >= 6) {
@@ -121,6 +120,7 @@ class DatePicker {
       maxRows = 5;
     }
 
+    // Here is the meet of the grid, where we do our calculation based on Moment data
     for (let i = 0; i < maxRows; i++) {
       const row = document.createElement('tr');
       gridBody.appendChild(row);
@@ -139,6 +139,8 @@ class DatePicker {
             let day = cell.textContent;
             console.log(day, 'hello');
             this.calcBookingDate(dateObj, day);
+            popBack.classList.remove('displayBlock');
+            popBack.classList.add('displayNone');
           });
           dateTotal++;
         } else {
@@ -146,27 +148,27 @@ class DatePicker {
         }
         
         row.appendChild(cell);
-
+        
+        // to break to next row
         if (j > 6) {
             break;
         }
       }
-
-
     }
-
-
   }
 }
 
-
+// Here adding the button to pop the date picker
+const popBack = document.querySelector('.picker-pop-back');
+const button = document.querySelector('button');
+button.addEventListener('click', () => {  
+  popBack.classList.add('displayBlock');
+});
 
 
 // initiate class on load
 window.addEventListener("load", () => {
-  
-  const test = new DatePicker();
-  
+  new DatePicker();  
 });
 
 
